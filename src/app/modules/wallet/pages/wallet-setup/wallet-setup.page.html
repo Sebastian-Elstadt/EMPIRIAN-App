@@ -1,0 +1,11 @@
+<ion-content>
+
+  @if(currentView === 'method-select'){
+  <wallet-setup-method-select [@fadeSlideInOut] (onMethodSelect)="currentView = $event"></wallet-setup-method-select>
+  }
+
+  @if(currentView === 'new-wallet'){
+  <wallet-new-wallet [@fadeSlideInOut]></wallet-new-wallet>
+  }
+
+</ion-content>

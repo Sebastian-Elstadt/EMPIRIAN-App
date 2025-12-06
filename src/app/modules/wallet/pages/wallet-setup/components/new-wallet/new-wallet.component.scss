@@ -1,0 +1,30 @@
+.content {
+    width: 100vw;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+header {
+    text-align: center;
+    font-family: "Radley", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 16px 0;
+    margin: 0 auto;
+    width: 90%;
+    border-bottom: 1px solid lightgray;
+
+    h1{
+        margin: 0;
+    }
+}
+
+.loading-message{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    column-gap: 8px;
+}

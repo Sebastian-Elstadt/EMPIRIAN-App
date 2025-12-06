@@ -1,0 +1,48 @@
+<div class="transact-send-view">
+  <div class="view-head">
+    <ion-icon (click)="goPreviousView.emit()" name="chevron-back"></ion-icon>
+    <h3>Send <span>EMPIRIAN</span></h3>
+  </div>
+
+  @if(!connectionComplete){
+  <div>
+    <div class="timeout-label" *ngIf="isAwaitingPeer || isLoadingBridge">
+      Time left: {{timeoutSecondsLeft}}s
+    </div>
+
+    @if(isLoadingBridge){
+    <div class="loading-message" [@fadeSlideInOut]>
+      <ion-spinner name="crescent"></ion-spinner>
+      <span>Connecting...</span>
+    </div>
+    }
+    @else {
+    <div [@fadeSlideInOut] style="width: 100%;left: 0;">
+      <div class="bridge-id-copy">
+        <span (click)="CopyBridgeId()">{{bridgeIdDisplay}}</span>
+        <small>Tap To Copy</small>
+      </div>
+
+      @if(isAwaitingPeer){
+      <div class="loading-message">
+        <ion-spinner name="crescent"></ion-spinner>
+        <span>Waiting for peer...</span>
+      </div>
+      }
+    </div>
+    }
+  </div>
+  }
+  @else {
+    <div [@fadeSlideInOut] id="sendForm">
+
+      <small>How much <span>EMPIRIAN</span> do you want to send?</small>
+      <ion-input placeholder="0.00" type="number" [(ngModel)]="amountToSend"></ion-input>
+
+      <app-shard-style-button [disabled]="!amountToSend || amountToSend <= 0" (click)="SendEmpirian()">
+        SEND
+      </app-shard-style-button>
+
+    </div>
+  }
+</div>

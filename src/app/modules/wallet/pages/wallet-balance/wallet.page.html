@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true">
+
+  <div class="upper-content-container">
+    <div class="upper-content-inner">
+      <div class="user-balance">
+        <span>YOUR BALANCE</span>
+        <h1>
+          <!-- temp place to get balance -->
+          {{userService.userBalance | currency:'':''}}
+          <small>empirian</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="transact-button" (click)="mdlTransact.present()">
+    <ion-img src="../../../../../assets/images/icon-transparent.png"></ion-img>
+    <span>Transact</span>
+  </div>
+
+</ion-content>
+
+<ion-modal #mdlTransact [breakpoints]="[0, 0.6, 0.8, 0.9, 1]" [initialBreakpoint]="0.6" id="mdlTransact"
+  (didDismiss)="OnTransactModalDismiss()">
+  <ng-template>
+
+    <ion-content>
+      <h1 id="transactModalTitle">TRANSACT</h1>
+
+      @if(transactView === 'method'){
+      <div class="transact-option-buttons" [@fadeSlideInOut]>
+        <p>How do you want to transact?</p>
+        <app-shard-style-button (click)="SetTransactView('send')">
+          Send
+        </app-shard-style-button>
+        <app-shard-style-button (click)="SetTransactView('receive')">
+          Receive
+        </app-shard-style-button>
+      </div>
+      }
+
+      @if(transactView === 'error'){
+      <app-wallet-transact-error [@fadeSlideInOut] (goPreviousView)="SetTransactView('method')"
+        [message]="errorMessage"></app-wallet-transact-error>
+      }
+
+      @if(transactView === 'send'){
+      <app-wallet-send [@fadeSlideInOut] (openErrorView)="OnComponentError($event)"
+        (goPreviousView)="SetTransactView('method')"></app-wallet-send>
+      }
+
+      @if(transactView === 'receive'){
+      <app-wallet-receive [@fadeSlideInOut] (openErrorView)="OnComponentError($event)"
+        (goPreviousView)="SetTransactView('method')"></app-wallet-receive>
+      }
+
+    </ion-content>
+
+  </ng-template>
+</ion-modal>

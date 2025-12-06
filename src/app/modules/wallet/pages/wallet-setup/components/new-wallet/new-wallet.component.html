@@ -1,0 +1,17 @@
+<div class="content">
+  <header>
+    <h1>New Wallet</h1>
+  </header>
+
+  @if(generatingWallet){
+  <div class="loading-message" [@fadeSlideInOut]>
+    <ion-spinner name="crescent"></ion-spinner>
+    <span>Generating Wallet...</span>
+  </div>
+  }
+
+  @if(keyPairGenerated){
+    
+  }
+
+</div>

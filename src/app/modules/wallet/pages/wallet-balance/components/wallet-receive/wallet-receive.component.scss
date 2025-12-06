@@ -1,0 +1,79 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.loading-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    width: 100%;
+    padding: 20px 0;
+    font-family: "JosefinSans", sans-serif;
+    margin-top: 40px;
+}
+
+.transact-receive-view {
+    width: 100%;
+    padding: 24px 8px 8px 8px;
+
+    .view-head {
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+
+        & > ion-icon {
+            font-size: 25px;
+            transition: all 0.1s ease;
+
+            &:active {
+                translate: -5px 0;
+            }
+        }
+
+        h3 {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: "JosefinSans", sans-serif;
+            text-align: center;
+
+            span {
+                font-family: "Radley", sans-serif;
+                font-size: 15px;
+                translate: 0 -3px;
+                display: inline-block;
+                background-color: #222;
+                color: white;
+                padding: 4px 12px;
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+    .bridge-paste-container {
+        text-align: center;
+        margin-top: 10px;
+
+        small {
+            font-family: "JosefinSans", sans-serif;
+            font-weight: bold;
+            color: gray;
+        }
+
+        ion-input {
+            background-color: whitesmoke;
+            border-bottom: 1px solid lightgray;
+            width: 100%;
+            display: block;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-family: monospace;
+            font-size: 3.5vw;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true" color="light">
+
+  <div class="chat-info" (click)="mdlConnectionSetup.present()">
+    <span>UID: <b>{{userService.userId || '-'}}</b></span>
+    <span>Status: <b>{{IsConnectedToPeer() ? 'Connected' : 'Disconnected'}}</b></span>
+  </div>
+
+  <div class="chat-container">
+    @for (msg of chatMessages; track $index) {
+    <div class="chat-message message-{{msg.sender}}">
+      <div class="chat-message-inner">
+        <div class="chat-text">
+          {{msg.text}}
+        </div>
+        <div class="chat-timestamp">
+          {{msg.timestamp | date:'HH:mm'}}
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input [(ngModel)]="message" placeholder="Enter message..."></ion-input>
+    <ion-button slot="end" fill="clear" color="secondary" (click)="SendMessage()">
+      <ion-icon slot="icon-only" name="send-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-modal #mdlConnectionSetup [breakpoints]="[0, 0.5, 0.8]" [initialBreakpoint]="0.8">
+  <ng-template>
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Connection</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="mdlConnectionSetup.dismiss()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content color="light" class="ion-padding">
+      @if(IsConnectedToPeer()) {
+      <ion-button (click)="CloseConnection()" color="danger" expand="block">
+        Close Connection
+      </ion-button>
+      }
+      @else {
+      <div id="buildConnectionForm">
+        <ion-input [(ngModel)]="bridgeId" label="ID:" placeholder="..."></ion-input>
+
+        <ion-button expand="block" color="success" (click)="StartConnection()" [disabled]="isConnectingChat">
+          {{isConnectingChat ? 'Connecting...' : 'Start Connection'}}
+        </ion-button>
+      </div>
+      }
+    </ion-content>
+
+  </ng-template>
+</ion-modal>

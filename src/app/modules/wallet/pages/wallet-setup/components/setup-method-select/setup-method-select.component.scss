@@ -1,0 +1,80 @@
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.method-button {
+    width: 200vw;
+    height: 50vh;
+    position: absolute;
+    rotate: -45deg;
+    translate: -50% 0;
+    transition: all 0.5s ease-out;
+    z-index: 1;
+
+    &.active {
+        transition: all 0.5s ease-out;
+    }
+
+    .method-button-content {
+        position: absolute;
+        translate: -50% -50%;
+        rotate: 45deg;
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+        font-family: "JosefinSans", sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 50px;
+
+        ion-icon {
+            font-size: 35px;
+            color: gray;
+        }
+    }
+
+    &.new-wallet-method {
+        background-color: whitesmoke;
+        top: 0;
+        left: 22%;
+
+        &.active {
+            left: 28%;
+        }
+
+        .method-button-content {
+            left: 59%;
+            top: 65%;
+
+            ion-icon {
+                margin-left: 24px;
+            }
+        }
+    }
+
+    &.recover-wallet-method {
+        background-color: white;
+        left: 78%;
+        width: 210vw;
+        height: 60vh;
+        bottom: -7vh;
+
+        &.active {
+            left: 72%;
+        }
+
+        .method-button-content {
+            text-align: right;
+            align-items: flex-end;
+            top: 30%;
+            left: 37%;
+            width: 50%;
+
+            ion-icon {
+                margin-right: 24px;
+            }
+        }
+    }
+}

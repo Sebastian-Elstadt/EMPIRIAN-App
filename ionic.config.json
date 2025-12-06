@@ -1,0 +1,7 @@
+{
+  "name": "EMPIRIAN",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

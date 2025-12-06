@@ -1,0 +1,32 @@
+<div class="transact-receive-view">
+    <div class="view-head">
+        <ion-icon (click)="goPreviousView.emit()" name="chevron-back"></ion-icon>
+        <h3>Receive <span>EMPIRIAN</span></h3>
+    </div>
+
+    @if(!connectionComplete){
+    <div style="width: 100%;left: 0;" [@fadeSlideInOut]>
+        <div class="bridge-paste-container">
+            <small>Paste Transact-Code</small>
+            <ion-input placeholder="..." (ionInput)="OnBridgePasteInput()" [(ngModel)]="bridgeId"
+                [disabled]="isConnecting" (keyup.enter)="ConnectBridge()" class="ion-text-center"
+                type="text"></ion-input>
+        </div>
+
+        @if(!isConnecting){
+        <div class="loading-message" [@fadeSlideInOut]>
+            <ion-spinner name="crescent"></ion-spinner>
+            <span>Connecting...</span>
+        </div>
+        }
+    </div>
+    }
+    @else {
+    <div style="width: 100%;left: 0;" [@fadeSlideInOut]>
+        <div class="loading-message">
+            <ion-spinner name="crescent"></ion-spinner>
+            <span>Awaiting Transaction...</span>
+        </div>
+    </div>
+    }
+</div>

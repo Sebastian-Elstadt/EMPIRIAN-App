@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="method-button new-wallet-method" (click)="OnButtonClick('new-wallet')"
+    [class.active]="activeButton === 'new-wallet'">
+    <div class="method-button-content">
+      <span>New Wallet</span>
+    </div>
+  </div>
+
+  <div class="method-button recover-wallet-method" (click)="OnButtonClick('recover-wallet')"
+    [class.active]="activeButton === 'recover-wallet'">
+
+    <div class="method-button-content">
+      <span>Recover Wallet</span>
+    </div>
+
+  </div>
+</div>
